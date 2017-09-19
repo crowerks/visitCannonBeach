@@ -1,5 +1,32 @@
-$black: '#5D5D5D';
+$black: #5D5D5D;
+$salmon: salmon;
+$white: #FFFFFF;
+
+$serif: serif;
+$sanserif: sans-serif;
 
 body {
   background-color: $black;
+}
+h1 {
+  color: $salmon;
+  text-align: center;
+  font-size: 100px;
+  text-decoration: overline;
+  font-family: $serif;
+}
+h2 {
+  color: $white;
+  text-align: center;
+  font-family: $sanserif;
+  font-size: 50px;
+}
+
+img {
+  max-width: 100%;
+}
+.align-center {
+  text-align: center;
+  position: relative;
+  margin-left: 20%;
 }
