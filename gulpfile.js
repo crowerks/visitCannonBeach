@@ -9,6 +9,9 @@ var concat = require('gulp-concat');
 var merge = require('merge-stream');
 var newer = require('gulp-newer');
 var imagemin = require('gulp-imagemin');
+var minify = require('gulp-minify');
+var rename = require('gulp-rename');
+var cssmin = require('gulp-cssmin');
 
 
 //Set ths sources for backend development
@@ -80,6 +83,39 @@ gulp.task('scripts', ['clean-scripts'], function() {
   .pipe(browserify())
   .pipe(gulp.dest(APPPATH.js))
 });
+
+/** Production Tasks **/
+//minify scripts in main.js
+gulp.task('compress', function() {
+  gulp.src(SOURCEPATHS.jsSource)
+  .pipe(concat('main.js'))
+  .pipe(browserify())
+  .pipe(minify())
+
+  .pipe(gulp.dest(APPPATH.js))
+});
+
+// makes sass work
+gulp.task('compresscss', function() {
+    var bootstrapCSS = gulp.src('./node_modules/bootstrap/dist/css/bootstrap.css');
+    var sassFiles;
+
+    sassFiles = gulp.src(SOURCEPATHS.sassSource)
+      .pipe(autoprefixer())
+      //1 autoprefixer adds -webkit-transition to the css
+      .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+      //2 sass compiles .scss down to .css.
+      //options: expanded, nested, compressed, compact
+
+      //this merges the css together. Order dictates the css output
+      return merge(bootstrapCSS, sassFiles)
+      .pipe(concat('app.css'))
+      .pipe(cssmin())
+      .pipe(rename({suffix: '.min'}))
+      .pipe(gulp.dest(APPPATH.css));
+      //3 dest gives destination to write the css
+});
+/** End of Production Tasks **/
 
 //creates html files in app
 gulp.task('copy', ['clean-html'], function() {
