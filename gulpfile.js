@@ -12,6 +12,7 @@ var imagemin = require('gulp-imagemin');
 var minify = require('gulp-minify');
 var rename = require('gulp-rename');
 var cssmin = require('gulp-cssmin');
+var htmlmin = require('gulp-htmlmin');
 
 
 //Set ths sources for backend development
@@ -115,6 +116,12 @@ gulp.task('compresscss', function() {
       .pipe(gulp.dest(APPPATH.css));
       //3 dest gives destination to write the css
 });
+gulp.task('minifyHtml', function() {
+  return gulp.src(SOURCEPATHS.htmlSource)
+    .pipe(htmlmin({collapseWhitespace:true}))
+    .pipe(gulp.dest(APPPATH.root))
+});
+
 /** End of Production Tasks **/
 
 //creates html files in app
@@ -141,3 +148,5 @@ gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'clean-scripts', 'scr
 
 // this is the default gulp task
 gulp.task('default', ['watch']);
+
+gulp.task('production', ['minifyHtml', 'compresscss', 'compress']);
