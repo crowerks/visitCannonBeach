@@ -8,6 +8,7 @@ var clean = require('gulp-clean');
 var concat = require('gulp-concat');
 var merge = require('merge-stream');
 
+
 //Set ths sources for backend development
 var SOURCEPATHS = {
   sassSource : 'src/scss/*.scss',
@@ -19,7 +20,8 @@ var SOURCEPATHS = {
 var APPPATH = {
   root : 'app/',
   css : 'app/css',
-  js : 'app/js'
+  js : 'app/js',
+  fonts : 'app/fonts'
 }
 
 //this keeps html in src and app synced
@@ -36,7 +38,7 @@ gulp.task('clean-scripts', function() {
 
 // makes sass work
 gulp.task('sass', function() {
-    var bootstrapCSS = gulp.src('node_modules/bootstrap/dist/css/bootstrap.css');
+    var bootstrapCSS = gulp.src('./node_modules/bootstrap/dist/css/bootstrap.css');
     var sassFiles;
 
     sassFiles = gulp.src(SOURCEPATHS.sassSource)
@@ -51,6 +53,12 @@ gulp.task('sass', function() {
       .pipe(concat('app.css'))
       .pipe(gulp.dest(APPPATH.css));
       //3 dest gives destination to write the css
+});
+
+//move fonts from dependency to app
+gulp.task('moveFonts', function() {
+  gulp.src('./node_modules/bootstrap/fonts/*.{eot,svg,ttf,woff,woff2}')
+  .pipe(gulp.dest(APPPATH.fonts));
 });
 
 //compiles everything to main.js in app
@@ -77,7 +85,7 @@ gulp.task('serve', ['sass'], function() {
 });
 
 //gulp watch makes changes once the sass has been updated
-gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'clean-scripts', 'scripts'], function() {
+gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'clean-scripts', 'scripts', 'moveFonts'], function() {
   gulp.watch([SOURCEPATHS.sassSource], ['sass']);
   gulp.watch([SOURCEPATHS.htmlSource], ['copy']);
   gulp.watch([SOURCEPATHS.jsSource], ['scripts']);
