@@ -1,3 +1,4 @@
+/*Crowerks Sass Style */
 $black: #5D5D5D;
 $salmon: salmon;
 $white: #FFFFFF;
@@ -13,7 +14,7 @@ body {
 h1 {
   color: $salmon;
   text-align: center;
-  font-size: 3em;
+  font-size: 2em;
   text-decoration: overline;
   font-family: $serif;
 }
@@ -24,7 +25,7 @@ h2 {
   color: $white;
   text-align: center;
   font-family: $sanserif;
-  font-size: 1.5em;
+  font-size: 1em;
   padding-bottom: $fontsize;
 }
 
