@@ -1,25 +1,42 @@
 .navigation {
+  @include clearfix;
   padding: 10px;
   background-color: $nav-bg-color;
 
   h2 {
     text-align: left;
     margin: 0;
+
+    &.site-name {
+      display: none;
+      @include tablet{
+        display: inline-block;
+      }
+    }
+    &.nav-title {
+      display: block;
+      text-align: center;
+      @include tablet {
+        display: none;
+      }
+    }
   }
   nav {
     display: inline;
+    //margin-top: 5px;
     @include tablet {
       float: right
     }
     a {
-      color: $white;
+      color: $menu-anchor-color;
       font-size: $menu-anchor-font-size;
       text-decoration: none;
       display: block;
       margin-bottom: 20px;
+      text-align: right;
 
       &:hover {
-        color: $yellow;
+        color: $menu-anchor-hover-color;
       }
 
       @include tablet {

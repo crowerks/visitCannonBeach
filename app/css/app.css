@@ -94,13 +94,44 @@ footer {
 }
 
 .navigation {
+  *zoom: 1;
   padding: 10px;
   background-color: #005170;
+}
+
+.navigation:before, .navigation:after {
+  content: ' ';
+  display: table;
+}
+
+.navigation:after {
+  clear: both;
 }
 
 .navigation h2 {
   text-align: left;
   margin: 0;
+}
+
+.navigation h2.site-name {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .navigation h2.site-name {
+    display: inline-block;
+  }
+}
+
+.navigation h2.nav-title {
+  display: block;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .navigation h2.nav-title {
+    display: none;
+  }
 }
 
 .navigation nav {
@@ -119,6 +150,7 @@ footer {
   text-decoration: none;
   display: block;
   margin-bottom: 20px;
+  text-align: right;
 }
 
 .navigation nav a:hover {
