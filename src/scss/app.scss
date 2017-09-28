@@ -1,39 +1,7 @@
-/*Crowerks Sass Style */
-$black: #5D5D5D;
-$salmon: salmon;
-$white: #FFFFFF;
-
-$serif: serif;
-$sanserif: sans-serif;
-$fontsize: 30px;
-
-body {
-  background-color: $black;
-  font-size: $fontsize;
-}
-h1 {
-  color: $salmon;
-  text-align: center;
-  font-size: 2em;
-  text-decoration: overline;
-  font-family: $serif;
-}
-h1:hover {
-  transition:  color 1s ease;
-}
-h2 {
-  color: $white;
-  text-align: center;
-  font-family: $sanserif;
-  font-size: 1em;
-  padding-bottom: $fontsize;
-}
-
-img {
-  max-width: 100%;
-}
-.align-center {
-  display: block;
-  text-align: center;
-  margin: 0 auto;
-}
+//this pulls in _name.scss:
+@import 'variables';
+@import 'mixins';
+@import 'typography';
+@import 'layout';
+@import 'grid';
+@import 'navigation';

@@ -1,0 +1,65 @@
+/*Crowerks Sass Style */
+
+/*
+as many variables as you want, adds nothing the display css
+Variables must come before the file
+
+darken
+lighten
+*/
+//colors
+$black:       #4d4d4d;
+$white:       #f5f5f5;
+$blue:        #0076A3;
+$light-blue:  lighten($blue, 10);
+$dark-blue:   darken($blue, 10);
+$yellow:      #FFBA00;
+$green:       #548c27;
+$red:         #fe2d28;
+
+//bg colors
+$bg-color: $blue;
+$nav-bg-color: $dark-blue;
+$bg-footer: $dark-blue;
+
+//fonts
+$sansserif: 'Rajdhani', sans-serif;
+$sanserif: $sansserif;
+$serif: 'Merriweather', serif;
+
+$text-color: $black;
+$paragraph-font-size: 1.9rem;
+$paragraph-font-weight: 300;
+
+$menu-anchor-font-size: 1.4rem;
+$menu-anchor-hover-color: $menu-anchor-hover-color;
+
+//headings
+$heading-color: $yellow;
+$heading-font-weight: 400;
+$heading-font-size : ( //this is a map
+  h1: 40px,
+  h2: 36px,
+  h3: 32px,
+  h4: 28px,
+  h5: 24px,
+  h6: 20px
+);
+
+//visit
+$visit-border-color: $white;
+$visit-heading-color: lighten($yellow, 10);
+$visit-text-color: $white;
+
+//grid & responsive
+$breakpoints: (
+  phone: 480px,
+  tablet: 768px,
+  desktop: 1024px
+);
+
+$columns: 12;
+$grid-max-width: 1200px;
+
+//buttons
+$btn-font-size: 16px;

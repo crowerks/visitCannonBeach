@@ -1,0 +1,15 @@
+.container {
+  margin: 0 auto;
+  width: 95%;
+  @include tablet {
+    width: 90%;
+  }
+  @include desktop {
+    width: 100%;
+    max-width: $grid-max-width;
+  }
+  max-width: $grid-max-width;
+}
+// img {
+//   @include border-radius(20px);
+// }

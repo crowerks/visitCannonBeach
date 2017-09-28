@@ -19,6 +19,7 @@ var htmlmin = require('gulp-htmlmin');
 // ↓ Set ths sources for backend development: src
 var SOURCEPATHS = {
   sassSource : 'src/scss/*.scss',
+  sassApp : 'src/scss/app.scss',
   htmlSource : 'src/*.html',
   jsSource : 'src/js/**',
   imgSource : 'src/img/**'
@@ -47,18 +48,12 @@ gulp.task('clean-scripts', function() {
 
 // ↓ makes sass work
 gulp.task('sass', function() {
-    // ↓ pull in Bootstrap
-    var bootstrapCSS = gulp.src('./node_modules/bootstrap/dist/css/bootstrap.css');
-    var sassFiles;
-
-    sassFiles = gulp.src(SOURCEPATHS.sassSource)
+    sassFiles = gulp.src(SOURCEPATHS.sassApp)
       // ↓ autoprefixer adds -webkit-transition to the css
       .pipe(autoprefixer())
       // ↓ sass compiles .scss down to .css.
       //options: expanded, nested, compressed, compact
       .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-      // ↓ merges the css together. Order dictates the css output
-      return merge(bootstrapCSS, sassFiles)
       // ↓ put it all into one css
       .pipe(concat('app.css'))
       // ↓ send to destination
@@ -74,14 +69,6 @@ gulp.task('images', function() {
     .pipe(imagemin())
     // ↓ send to destination
     .pipe(gulp.dest(APPPATH.img));
-});
-
-//copy fonts from src to app
-gulp.task('copyFonts', function() {
-  // ↓ pull fonts from source
-  gulp.src('./node_modules/bootstrap/fonts/*.{eot,svg,ttf,woff,woff2}')
-  // ↓ send to destination
-  .pipe(gulp.dest(APPPATH.fonts));
 });
 
 //compiles everything to main.js in app
@@ -113,18 +100,12 @@ gulp.task('compress', function() {
 
 // makes sass work
 gulp.task('compresscss', function() {
-    // ↓ pull in Bootstrap
-    var bootstrapCSS = gulp.src('./node_modules/bootstrap/dist/css/bootstrap.css');
-    var sassFiles;
-
     sassFiles = gulp.src(SOURCEPATHS.sassSource)
       // ↓ autoprefixer adds -webkit-transition to the css
       .pipe(autoprefixer())
       // ↓ sass compiles .scss down to .css.
       //options: expanded, nested, compressed, compact
       .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-      // ↓ merges the css together. Order dictates the css output
-      return merge(bootstrapCSS, sassFiles)
       // ↓ smash into one css
       .pipe(concat('app.css'))
       // ↓ minify css
@@ -163,7 +144,7 @@ gulp.task('serve', ['sass'], function() {
 });
 
 // ↓ gulp watch makes changes once the sass has been updated
-gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'clean-scripts', 'scripts', 'copyFonts', 'images'], function() {
+gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'clean-scripts', 'scripts', 'images'], function() {
   gulp.watch([SOURCEPATHS.sassSource], ['sass']);
   gulp.watch([SOURCEPATHS.htmlSource], ['copy']);
   gulp.watch([SOURCEPATHS.jsSource], ['scripts']);

@@ -1,0 +1,28 @@
+p {
+  font-size: $paragraph-font-size;
+  color: $white;
+  font-weight: $paragraph-font-weight;
+}
+a {
+  color: $yellow;
+}
+h1,h2,h3,h4,h5,h6 {
+  color: $heading-color;
+  font-family: $sansserif;
+  font-weight: $heading-font-weight;
+}
+h1 {
+  color: $heading-color;
+  text-align: left;
+  font-size: 2em;
+  //text-decoration: overline;
+}
+h1:hover {
+  transition:  color 1s ease;
+}
+h2 {
+  margin: 20px 0;
+  color: $white;
+  text-align: center;
+  font-size: 1em;
+}
