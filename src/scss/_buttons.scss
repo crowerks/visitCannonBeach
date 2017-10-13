@@ -1,0 +1,3 @@
+.btn {
+  @include button($blue, darken($blue,10), $white);
+}

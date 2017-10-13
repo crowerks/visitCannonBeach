@@ -1,0 +1,39 @@
+table {
+  width: 100%;
+  text-align: left;
+  font-size: $table-font-size;
+  border-collapse: collapse;
+  > caption {
+    text-align: left;
+    font-family: $serif;
+    font-size: map-get($heading-font-size, h3);
+    font-weight: 700;
+    padding: 5px;
+    color: $yellow;
+    margin-bottom: 20px;
+  }
+  thead tr th {
+    background-color: darken($blue, 20);
+    color: $table-color;
+    font-size: 1.3rem;
+  }
+  > thead,
+  >tbody {
+    >tr {
+      color: $table-color;
+      font-size: 1.2rem;
+      background-color: $dark-blue;
+      &:nth-child(odd) {
+        background-color: $blue;
+      }
+      &:hover {
+        background-color: darken($yellow, 10);
+      }
+      th,
+      td {
+        padding: 10px;
+        border-bottom: 1px dashed $white;
+      }
+    }
+  }
+}

@@ -52,3 +52,11 @@
     }
   }
 }
+
+
+.footer-navigation {
+  @extend .navigation;
+  .menu {
+    float: left;
+  }
+}

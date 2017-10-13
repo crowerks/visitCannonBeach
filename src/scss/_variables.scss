@@ -19,7 +19,6 @@ $red:         #fe2d28;
 
 //bg colors
 $bg-color: $blue;
-$nav-bg-color: $dark-blue;
 $bg-footer: $dark-blue;
 
 //fonts
@@ -28,12 +27,18 @@ $sanserif: $sansserif;
 $serif: 'Merriweather', serif;
 
 $text-color: $black;
-$paragraph-font-size: 1.9rem;
+$paragraph-font-size: 1.5rem;
 $paragraph-font-weight: 300;
 
+//navigation
+$nav-bg-color: $dark-blue;
 $menu-anchor-font-size: 1.4rem;
 $menu-anchor-color: $white;
 $menu-anchor-hover-color: $yellow;
+
+//cards
+$cards-bg-color: $white;
+$card-text-font-size: 1.2rem;
 
 //headings
 $heading-color: $yellow;
@@ -46,6 +51,10 @@ $heading-font-size : ( //this is a map
   h5: 24px,
   h6: 20px
 );
+
+//tables
+$table-font-size: 1.2em;
+$table-color: $white;
 
 //visit
 $visit-border-color: $white;
@@ -64,3 +73,5 @@ $grid-max-width: 1200px;
 
 //buttons
 $btn-font-size: 16px;
+$text-transform: uppercase;
+$btn-font-weight: bold;
